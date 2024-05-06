@@ -1,4 +1,4 @@
-#+title: Technical Interview Repo
+#+title: Technical Interview
 
 * 개요
 Biyard 기술 인터뷰를 기술 내용을 자유롭게 PR(Pull Request)하는 저장소
