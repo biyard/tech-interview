@@ -46,10 +46,11 @@ Biyard 기술 인터뷰를 기술 내용을 자유롭게 PR(Pull Request)하는 
 | Smart pointer on C++              |
 | 그 외 인터뷰 대상자가 자유롭게 선정 |
 
-*** 인터뷰 주제 작성 및 PR
+*** 인터뷰 주제 작성 및 PR (예시: [[https://github.com/biyard/tech-interview/pull/1][#1]])
 + 본 레포지토리를 fork
-+ 인터뷰 대상자의 디렉토리 생성
++ 인터뷰 대상자의 디렉토리 생성 (예시: [[file:hackartists/readme.org][hackartists]] 참고)
 + 선정한 주제에 대한 내용을 =.md=, =.org= 등 자유로운 문서 포맷으로 작성
+
 
 ** 이메일 전송
 + [[mailto:hi@biyard.co][hi@biyard.co]]로 아래의 내용을 이메일로 전송
