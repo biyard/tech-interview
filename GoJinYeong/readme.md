@@ -11,7 +11,7 @@
 | 데이터 구조 | 테이블 기반 | 문서, 키-값, 그래프, 와이드 칼럼 스토어 |
 | 사용 사례 | 다중 행 트랜잭션, 관계형 데이터 | 문서, JSON, 비정형 데이터 |
 | 장점 | 데이터 무결성 보장 | 유연성, 확장성 |
-| 단점 | 복잡성, 비용 | |
+| 단점 | 복잡성, 비용 | 데이터 무결성 보장 어려움, 일관성 부족, 복잡성 |
 | 예   | MySQL, PostgreSQL, Oracle, SQL Server, Microsoft SQL Server | MongoDB, Cassandra, Couchbase, Amazon DynamoDB, Redis |
 
 **참고:** 이 표는 SQL과 NoSQL 데이터베이스의 주요 차이점을 요약한 것입니다. 실제 사용 사례는 각 데이터베이스의 특정 기능 및 사용자의 요구 사항에 따라 달라질 수 있습니다.
