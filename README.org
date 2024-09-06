@@ -10,7 +10,7 @@
     - [[#인천-유니버스-incheonworld][인천 유니버스 (incheon.world)]]
     - [[#byzone][ByZone]]
     - [[#그-외-서비스][그 외 서비스]]
-- [[#지원-가능한-포지션][지원 가능한 포지션]]
+- [[#근로-조건][근로 조건]]
 - [[#인터뷰-프로세스][인터뷰 프로세스]]
   - [[#사전-적격자-검토][사전 적격자 검토]]
   - [[#기술-인터뷰-pr-요청][기술 인터뷰 PR 요청]]
@@ -43,11 +43,14 @@ Biyard 기술 인터뷰를 기술 내용을 자유롭게 PR(Pull Request)하는 
 *** 그 외 서비스
 + DAO를 활용한 블록체인 기반 서비스 개발
 + 보안 기술 기반의 융합 기술을 활용한 기술 연구 및 서비스 개발
-  
-* 지원 가능한 포지션
-+ 계약일로부터 2024년11월30일까지
+
+* 근로 조건
++ 입사일로부터 3개월간 계약직으로 고용
   + 급여는 근무시간, 능력에 따라 협의
-  + 계약종료 이후에는 성과, 내부 사정에 따라 연장, 정규직 전환 등 협의 가능
+  + 3개월 이후 필요시 계약 최대 1개월 연장 가능
++ 계약직 종료 시 정규직 전환
+  + 성과에 따라 급여 재협상 수행
+  + 또는 핏이 안맞는 경우에는 계약 종료
 
 * 인터뷰 프로세스
 ** 사전 적격자 검토
@@ -64,14 +67,15 @@ Biyard 기술 인터뷰를 기술 내용을 자유롭게 PR(Pull Request)하는 
 + 웹, 모바일, 백엔드, 스마트컨트랙트, 인프라 등 두 개 이상 개발 가능하거나, 배우고자 하는 의지가 있는자
 
 #+caption: Biyard 주요 개발 스택
-| 구분            | 기술 스택                          |
-|----------------+-----------------------------------|
-| Web            | Flutter Web(80%), React(20%)      |
-| WebAssembly    | Go(50%), Rust(50%)                |
-| Backend        | Go(70%), Rust(30%)                |
-| Smart contract | Rust(70%), Solidity(30%)          |
-| Database       | DynamoDB(100%)                    |
-| Infra          | AWS SAM, Lambda, CloudFront, S3 등 |
+| 구분            | 기술 스택                                       |
+|----------------+------------------------------------------------|
+| Web            | Rust Dioxus(60%), Flutter Web(20%), React(20%) |
+| WebAssembly    | Rust(90%), Go(10%)                             |
+| Backend        | Rust(70%), Go(30%)                             |
+| Smart contract | Rust(70%), Solidity(30%)                       |
+| Database       | DynamoDB(100%)                                 |
+| Blockchain     | ICP, Klaytn                                    |
+| Infra          | AWS CDK, AWS SAM, Lambda, CloudFront, S3 등     |
 
 ** 기술 인터뷰 PR 요청
 *** 기술 주제 선정
@@ -81,6 +85,7 @@ Biyard 기술 인터뷰를 기술 내용을 자유롭게 PR(Pull Request)하는 
 #+caption: 기술 주제 예시
 | 주제                               |
 |-----------------------------------|
+| WebAssembly                       |
 | SQL 과 No-SQL 차이                 |
 | DynamoDB                          |
 | Concurrency on Rust               |
