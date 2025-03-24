@@ -9,9 +9,10 @@
 
 1.    State
 2.    Transaction
-3.    Script/VM 
-4.    Consensus Mechanism 
-5.    Finality
+3.    Block   
+4.    Script/VM 
+5.    Consensus Mechanism 
+6.    Finality
 
 Lastly BTCFI   
 
@@ -73,8 +74,6 @@ UTXO(Unspent Transaction Output)를 input으로 받아서 새로운 UTXO를 outp
 - **maxPriorityFeePerGas**: 검증자에게 지급할 팁(우선순위 수수료)의 최대 가격입니다.
 - **maxFeePerGas**: 트랜잭션에 지불할 의사가 있는 단위 가스당 최대 수수료로, 기본 수수료와 우선순위 수수료를 모두 포함합니다.
 
-
-
 ## Script/EVM
 
 여기까지만 보면 단순합니다. 하지만 비트코인과 이더리움은 각각 script와 VM을 통해 보다 복잡한 작업을 수행 가능하게 합니다.
@@ -113,6 +112,39 @@ EVM을 기반으로 이더리움의 State 데이터에 접근 가능한 Smart Co
 DAPP 등이 가능한 이유는 EVM이 Turing Complete 하기 때문이고, 이더리움에서 DeFi가 가능하게 해줍니다. 
 
 뒤에 설명할 BTCFI에서 비트코인의 새로운 유틸리티 부여를 위해 왜 튜링 완전한 가상 머신을 갖고 있는 네트워크가 필수인지를 이해할 수 있습니다. 
+
+
+## Consensus Mechanism
+
+여태까지의 내용은 처음에 언급한 블록체인의 정의인 State + Network 중에서 State와 관련된 부분만 다루었다고 볼 수 있습니다. 
+Consensus Mechanism을 통해 블록체인이 탈중앙을 어떻게 달성했는지와 P2P네트워크가 어떻게 상태에 대한 합의를 이루는지를 이해할 수 있습니다. 
+
+즉 블록체인의 State + Network 의 Network를 온전히 이해할 수 있습니다. 
+
+Consensus Mechanism은 네트워크의 참여자(노드)들이 동일한 State에 합의하는 방법입니다. 어떤 블록이 다음 블록으로 체인에 추가될지를 정하는 약속으로 봐도 무방합니다. 비트코인과 이더리움은 서로 다른 합의 메커니즘을 채택하고 있습니다. 
+
+ 
+### Bitcoin의 Consensus Mechanism: Proof of Work (PoW)
+
+비트코인은 작업 증명(Proof of Work) 방식을 사용합니다. 이는 네트워크 참여자(채굴자)가 복잡한 수학 문제를 풀어 블록을 생성하는 방식입니다.
+블록에 있는 Nonce값을 조정하면 해시가 다르게 나온다는 점을 이용하여 특정 수보다 작은 값을 찾는 과정을 반복. 
+
+#### 주요 특징:
+- **에너지 집약적**: 많은 컴퓨팅 파워와 전기를 소비합니다.
+- **높은 보안성**: 네트워크를 공격하려면 전체 네트워크 해시파워의 51% 이상을 확보해야 합니다.
+- **탈중앙화**: 누구나 채굴에 참여할 수 있어 높은 수준의 탈중앙화를 유지합니다.
+- **난이도 조정**: 약 2주마다 블록 생성 시간이 10분을 유지하도록 난이도가 자동 조정됩니다.
+
+#### 작동 방식:
+1. 채굴자들은 이전 블록 해시, 트랜잭션 데이터, 논스(nonce) 값을 조합하여 해시 함수에 입력합니다.
+2. 목표는 특정 조건(예: 특정 수의 선행 0비트)을 만족하는 해시 값을 찾는 것입니다.
+3. 유효한 해시를 찾은 채굴자는 새 블록을 네트워크에 전파하고 블록 보상을 받습니다.
+4. 다른 노드들은 해당 해시가 조건을 만족하는지 쉽게 검증할 수 있습니다.
+
+![Bitcoin PoW Consensus](https://github.com/user-attachments/assets/c7ad1c4e-1d95-4e56-b7c5-a2f7e3c65f90)
+
+
+
 
 
 
