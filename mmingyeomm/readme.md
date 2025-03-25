@@ -1,4 +1,4 @@
-## Comparison of Bitcoin and Ethereum ... and BTCFI 
+## Comparison of Bitcoin and Ethereum ... and BTCFI(Babylon)
 
 
 ### Basics   
@@ -325,24 +325,91 @@ Fork가 발생했을 때, 블록체인 네트워크는 여러 개의 체인을 �
 --- 
 
 
-## BTCFI 
+## BTCFI(Babylon)
 
-### Introduction to BTCFI ### 
+### Introduction to Babylon ### 
+
+
 BTCFI는 비트코인의 가치와 유틸리티를 확장하기 위한 새로운 금융 생태계입니다. 비트코인은 뛰어난 보안성과 탈중앙화를 제공하지만, 스마트 컨트랙트 기능이 제한적이어서 DeFi(탈중앙화 금융) 애플리케이션을 구축하는 데 한계가 있었습니다. BTCFI는 이러한 한계를 극복하고 비트코인을 현대 금융 시스템에 통합하는 솔루션을 제공합니다.
 
-비트코인의 유동성을 활용하기 위해 다양한 방법이 제시되고 있는데 이 중 Babylon이 어떻게 문제를 극복하였는지를 알아보겠습니다. 
+비트코인의 유동성을 활용하기 위해 다양한 방법이 제시되고 있는데 이 중 Babylon이 제시한 방법을 살펴보겠습니다. 
 
-### Challenges ### 
-비트코인은 스마트 컨트랙트 기능이 제한적이어서 다음과 같은 도전 과제가 있습니다:
-
-튜링 불완전한 스크립트 언어로 복잡한 금융 로직 구현이 어렵습니다.이에 따라 이더리움과 같은 다른 블록체인에 비해 프로그래밍 유연성 부족한 문제를 겪게됩니다. 
-
-비트코인의 
- 
+Babylon은 비트코인의 유동성을 POS체인에 Staking을 하며 활용도를 찾아냈습니다. 
 
 
+### Bitcoin Staking Problem  ###
+
+비트코인을 다른 POS체인에 Staking을 하기위해서는 두개 중 하나의 방법을 택해야 됩니다. 
+
+1. Bridging to PoS chain.
+   -> 비트코인 자산을 bridge 솔루션을 이용하여 wbtc를 pos체인에 올리는 방법입니다. 이 방법의 문제점은 bridge 솔루션 자체의 안정성을 보장하기 힘들다는 것입니다.
+      bridge를 하기 위해서는 중앙의 주체를 믿거나 multisig bridge comittee를 이용해야 하는데 둘다 안정성을 보장받기 어렵습니다. 
+
+2. Remote staking from Bitcoin chain
+   -> 비트코인을 bridge하지 않기 위해 babylon이 선택한 방법으로 비트코인의 타임락 script를 이용하여 일정기간동안 비트코인의 소유자가 비트코인을 사용할 수 없게 잠그고,
+      소비자 PoS 체인에서 프로토콜 위반이 발생할 경우 스테이크를 슬래싱하는 방식입니다. 
+
+      이 방식의 문제점은 script가 제한된 bitcoin에서 스테이킹된 금액을 슬래싱 할 방법이 없다는 것인데요 바빌론 네트워크는 슬래싱을 구현하기 위해 EOTS라는 암호학 기법을 사용하였습니다.
 
 
+### 바빌론에서 비트코인을 PoS체인에 스테이킹 하는 과정 ### 
+앨리스는 1 비트코인을 가지고 있으며 이를 PoS 체인에 스테이킹하고 싶다고 가정하면, 과정은 다음과 같이 진행됩니다:
+
+스테이킹 계약 시작
+먼저 앨리스는 비트코인 체인에 스테이킹 트랜잭션을 전송하여 자신의 비트코인을 셀프 커스터디 볼트(자기 관리형 금고)에 잠금으로써 스테이킹 계약을 체결합니다.
+
+비트코인 잠금 해제 방법
+잠긴 비트코인은 앨리스의 개인 키를 사용하여 다음 두 가지 방법 중 하나로만 잠금 해제될 수 있습니다:
+
+1. 앨리스가 언본딩(unbonding) 트랜잭션을 발행하면, 비트코인은 잠금 해제되어 3일 후에 앨리스에게 반환됩니다.
+
+2. 앨리스가 슬래싱(slashing) 트랜잭션을 발행하면, 비트코인은 소각 주소(burn address)로 전송됩니다.
+
+PoS 체인 검증 시작
+이 스테이킹 트랜잭션이 비트코인 체인에 나타나면, 앨리스는 자신의 키를 사용하여 PoS 블록에 서명함으로써 PoS 체인의 검증을 시작할 수 있습니다.
+
+
+
+<img width="823" alt="image" src="https://github.com/user-attachments/assets/15d68bba-db21-46b6-94dd-7f5328448495" />
+
+
+### EOTS ### 
+
+EOTS (Extractable one-time signatures)는 슬래싱을 구현하기 위해 사용되는 signature입니다. 
+
+EOTS가 바빌론에서 어떻게 작동하는지 확인해봅시다. 
+
+
+![image](https://github.com/user-attachments/assets/259cdd64-f61e-4945-a087-bbdec1a05c53)
+
+
+
+#### 1. EOTS Randomness(무작위 값) 생성: ####
+
+EOTS Manager는 FP(Finality Provider)가 블록에 최종적으로 서명할 때 사용할 무작위 값을 생성한다. 이 무작위 값은 FP의 비밀 키를 안전하게 보호하기 위한 중요한 요소이다.
+
+#### 2. EOTS Public Randomness 전달: #### 
+
+생성된 무작위 값은 EOTS Manager에 의해 FP에게 전달된다. FP는 이 값을 사용하여 최종적으로 블록에 서명하게 된다. 
+이 값은 서명 과정에서 FP의 비밀 키를 보호하는 데 중요한 역할을 하며, 만약 이중 서명이 발생할 경우 퍼블릭 키와 쌍을 이루는 비밀 키를 자동으로 노출시켜 악의적 검증자(악의적인 FP)에 대한 슬래싱 트랜잭션을 작동시킨다. 
+
+#### 3. EOTS Public Randomness와 Finality Vote 커밋: #### 
+
+FP는 최종성 투표 결과를 EOTS Public Randomness와 함께 블록체인에 커밋한다. 이를 통해 블록의 최종성을 확정하고, 이중 서명을 방지한다. 이 과정은 Babylon 프로토콜의 보안을 강화하고, FP의 서명 오류를 최소화하는 역할을 한다.
+
+#### 4. Covenant Committee와의 협력: #### 
+
+Covenant Committee는 FP가 비트코인을 언본딩(스테이킹 해제)하려고 할 때 중요한 검증 역할을 수행한다. FP가 언본딩을 요청하면, Covenant Committee는 이 요청이 올바른지 확인하고, 언본딩이 제대로 이루어졌는지 검증한다. 이 과정에서 Covenant Committee는 EOTS Manager와 협력하여 트랜잭션이 정확하게 처리되었는지 확인한 후, 언본딩을 승인한다. 이를 통해 언본딩 과정에서의 보안성을 높인다.
+
+
+### Bitcoin Stamping ### 
+
+
+
+
+### Architecture ### 
+
+<img width="823" alt="image" src="https://github.com/user-attachments/assets/ba5ac982-7cd0-4011-848b-2f3ba236879e" />
 
 
 
