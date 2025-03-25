@@ -409,12 +409,28 @@ surround voting까지 막아야 하는 이더리움과 다름 = 그렇기에 EOT
 
 ### Bitcoin Stamping ### 
 
+비트코인 네트워크와 PoS체인이 긴밀하게 동기화되어야 합니다.
+비트코인 타임스탬핑 기술을 통해 PoS 블록 해시와 블록에 투표하는 스테이커 세트를 비트코인 체인에 기록합니다.
 
+Babylon 네트워크가 비트코인과, PoS체인간 중재자로 작용하여 여러 유틸리티를 제공합니다. 
 
 
 ### Architecture ### 
 
 <img width="823" alt="image" src="https://github.com/user-attachments/assets/ba5ac982-7cd0-4011-848b-2f3ba236879e" />
+
+#### 3계층 아키텍처와 네트워크 효과 ####
+바빌론 체인을 둘 사이에 두어 Bitcoin 네트워크에서 제공하기 힘든 timestamping기능을 제공합니다. 
+Cosmos-SDK 기반 바빌론체인을 만들어 IBC(inter blockchain communication)를 통해 PoS체인과 교류할 수 있습니다. 
+
+바빌론 체인이 컨트롤 플레인 역할을 하며, 비트코인과 데이터 플레인(PoS 체인들) 간의 상호작용을 가능하게 함
+이 아키텍처는 네트워크 효과를 가져오고 상호운용성 가능성을 열어줌
+예를 들어, 바빌론 체인에 기록된 두 PoS 체인의 최종성 상태를 기반으로 PoS 체인 간 트랜잭션을 정산할 수 있음
+
+<img width="750" alt="image" src="https://github.com/user-attachments/assets/c931bb23-77f6-4a75-9089-2264497f39bb" />
+
+
+
 
 
 
