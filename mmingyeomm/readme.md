@@ -402,6 +402,11 @@ FP는 최종성 투표 결과를 EOTS Public Randomness와 함께 블록체인�
 Covenant Committee는 FP가 비트코인을 언본딩(스테이킹 해제)하려고 할 때 중요한 검증 역할을 수행한다. FP가 언본딩을 요청하면, Covenant Committee는 이 요청이 올바른지 확인하고, 언본딩이 제대로 이루어졌는지 검증한다. 이 과정에서 Covenant Committee는 EOTS Manager와 협력하여 트랜잭션이 정확하게 처리되었는지 확인한 후, 언본딩을 승인한다. 이를 통해 언본딩 과정에서의 보안성을 높인다.
 
 
+이더리움 PoS의 Gasper 와의 차이점.. 뇌피셜 
+
+( tendermint는 블록마다 2/3 vote를 받아서 finality를 보장받는 구조이기 때문에 더블 보팅만 잘 막으면 된다. 
+surround voting까지 막아야 하는 이더리움과 다름 = 그렇기에 EOTS로 슬래싱 메커니즘 구현이 가능했다. ) 
+
 ### Bitcoin Stamping ### 
 
 
